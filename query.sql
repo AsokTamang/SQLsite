@@ -1,8 +1,8 @@
 SELECT brand,
     model,
-    color,
+    condition,
+    price,
     year
 FROM cars
-WHERE model Like 'DB_'  --here LIKE DB_ means the cars having DB word at the start followed by onle one character in their model will be retrieved--
-
-
+WHERE condition >=3   ---here we are selecting the car whose condition is greater than or equal to 3 and it was manufactured before 1970
+AND year < 1970  
