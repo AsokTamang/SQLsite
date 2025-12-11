@@ -1,6 +1,6 @@
 SELECT brand,
     model,
-    year,
+    color,
     price
 FROM cars
-WHERE year != 1965;
+WHERE color != 'yellow';
