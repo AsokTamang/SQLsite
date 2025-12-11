@@ -1,8 +1,12 @@
-SELECT brand,
-    model,
-    condition,
-    price
-FROM cars
-WHERE price < 250000
-    OR brand = 'Porsche' --as the question is asking that color contains red  
-    ---here we are selecting the car whose condition is greater than or equal to 3 and it was manufactured before 1970
+/*
+	Search for columns: brand, model, color, year, price, sold
+		from the table cars
+		where the color is a shade of red
+		or the year is between 1960 and 1969
+		and sold is false
+*/
+
+SELECT brand, model, color, year,sold, price FROM cars
+	WHERE (color LIKE '%red%'
+	OR year BETWEEN 1960 AND 1969)
+	AND sold is false;
