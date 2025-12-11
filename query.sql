@@ -7,9 +7,11 @@
  */
 SELECT brand,
     model,
-    condition,
-    year
+    price,
+    sold
 FROM cars
-WHERE year IN (1961, 1963, 1965, 1967, 1969)
-    AND condition >= 3
+WHERE (
+        brand NOT IN ('Ford', 'Triumph', 'Chevrolet', 'Dodge') ---the customer doesnot want an american brand
+        OR price < 50000
+    )
     AND sold is false;
