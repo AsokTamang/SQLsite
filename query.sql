@@ -1,6 +1,8 @@
 SELECT brand,
     model,
     color,
-    price
+    year
 FROM cars
-WHERE color != 'yellow';
+WHERE model Like 'DB_'  --here LIKE DB_ means the cars having DB word at the start followed by onle one character in their model will be retrieved--
+
+
