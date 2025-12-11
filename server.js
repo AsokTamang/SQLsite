@@ -6,6 +6,7 @@ import fs from "fs";
   //this is known as immediately invoked async function
   const db = new PGlite(); //here we are creating a new instance of PGlite
   //here we are creating the table called CARS only if it doesnot exist
+  //the below code executes the creation of a table with the table schema with their values
   await db.exec(`
         CREATE TABLE IF NOT EXISTS cars ( 
         id SERIAL PRIMARY KEY,
