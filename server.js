@@ -64,8 +64,8 @@ import fs from "fs";
           ('Bentley', 'T2', 1978, 52000, 'silver', 4, false);
 `);
 
-  const query = fs.readFileSync("query.sql", "utf8"); //so this code query is used for reading the file query.sql
-  const response = await db.query(query);
+  const query = fs.readFileSync("query.sql", "utf8"); //so this code query is used for reading the file query.sql where we write down the sql commands
+  const response = await db.query(query);    //then we query the existing db that we just created using the sql command which is read in the variable query
   console.clear();
   console.table(response.rows); //here we are consoling the rows of the response in a table
 })();

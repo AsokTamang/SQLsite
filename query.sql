@@ -1,8 +1,8 @@
 SELECT brand,
     model,
     condition,
-    price,
-    year
+    price
 FROM cars
-WHERE condition >=3   ---here we are selecting the car whose condition is greater than or equal to 3 and it was manufactured before 1970
-AND year < 1970  
+WHERE price < 250000
+    OR brand = 'Porsche' --as the question is asking that color contains red  
+    ---here we are selecting the car whose condition is greater than or equal to 3 and it was manufactured before 1970
