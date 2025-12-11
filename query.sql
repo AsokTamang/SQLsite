@@ -1,6 +1,6 @@
 SELECT brand,
     model,
-    condition,
+    year,
     price
 FROM cars
-WHERE price < 50000;
+WHERE year != 1965;
