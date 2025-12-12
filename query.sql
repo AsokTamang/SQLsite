@@ -7,11 +7,8 @@
  */
 SELECT brand,
     model,
-    price,
-    sold
+    color
 FROM cars
-WHERE (
-        brand NOT IN ('Ford', 'Triumph', 'Chevrolet', 'Dodge') ---the customer doesnot want an american brand
-        OR price < 50000
-    )
+WHERE color = 'red'
+    AND brand != 'Ferrari'
     AND sold is false;
