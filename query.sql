@@ -5,11 +5,5 @@
  or the year is between 1960 and 1969
  and sold is false
  */
-SELECT brand,
-    model,
-    color,
-    price
-FROM cars
-WHERE color LIKE '%red%' AND sold is FALSE   --the customer wants with any shade of color red in car
-ORDER BY price
-LIMIT 5;  --here we are limiting the output upto quantity 5
+SELECT sum(price) as total_earnings FROM cars
+WHERE sold is TRUE  --here we are using sum on price for determing the total earnings of the sold cars
