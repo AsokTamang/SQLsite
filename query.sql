@@ -10,5 +10,6 @@ SELECT brand,
     condition,
     price
 FROM cars
+WHERE condition!=5 AND sold is FALSE
 ORDER BY condition DESC,
     price ---here we are retrieveing the table order first by the condition in descending order then the price in ascending order
