@@ -7,9 +7,9 @@
  */
 SELECT brand,
     model,
-    condition,
+    color,
     price
 FROM cars
-WHERE condition!=5 AND sold is FALSE
-ORDER BY condition DESC,
-    price ---here we are retrieveing the table order first by the condition in descending order then the price in ascending order
+WHERE color LIKE '%red%' AND sold is FALSE   --the customer wants with any shade of color red in car
+ORDER BY price
+LIMIT 5;  --here we are limiting the output upto quantity 5
