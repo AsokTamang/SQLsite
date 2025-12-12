@@ -7,7 +7,8 @@
  */
 SELECT brand,
     model,
-    year,
-    sold
+    condition,
+    price
 FROM cars
-WHERE ((brand='Dodge' AND (year BETWEEN 1960 AND 1969)) OR (brand in ('Ford','Triumph') AND (year BETWEEN 1970 AND 1979))) AND (sold IS FALSE)
+ORDER BY condition DESC,
+    price ---here we are retrieveing the table order first by the condition in descending order then the price in ascending order
