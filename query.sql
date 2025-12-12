@@ -1,2 +1,3 @@
-SELECT condition,count(condition) AS count_condition FROM cars
- GROUP BY condition;  ---here what we are doing is counting the number of datas from cars under each condition and then we are grouping the total datas of cars by condition
+SELECT brand , count(brand), FLOOR(AVG(price)) AS "AVG" FROM cars   ---so here we are selecting the brand, and counting the number of brands and then the average price of each brands
+WHERE sold IS FALSE
+GROUP BY brand
