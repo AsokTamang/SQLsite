@@ -7,8 +7,7 @@
  */
 SELECT brand,
     model,
-    color
+    year,
+    sold
 FROM cars
-WHERE color NOT IN ('blue','white','red')
-    AND brand NOT IN ('Aston Martin', 'Bentley', 'Jaguar')
-    AND sold is false;
+WHERE ((brand='Dodge' AND (year BETWEEN 1960 AND 1969)) OR (brand in ('Ford','Triumph') AND (year BETWEEN 1970 AND 1979))) AND (sold IS FALSE)
