@@ -1,3 +1,2 @@
-SELECT CEIL(AVG(price)) as avg,
- MIN(price), MAX(price) FROM cars
-WHERE sold is TRUE
+SELECT condition,count(condition) AS count_condition FROM cars
+ GROUP BY condition;  ---here what we are doing is counting the number of datas from cars under each condition and then we are grouping the total datas of cars by condition
