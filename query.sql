@@ -9,6 +9,6 @@ SELECT brand,
     model,
     color
 FROM cars
-WHERE color = 'red'
-    AND brand != 'Ferrari'
+WHERE color NOT IN ('blue','white','red')
+    AND brand NOT IN ('Aston Martin', 'Bentley', 'Jaguar')
     AND sold is false;
