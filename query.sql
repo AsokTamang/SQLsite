@@ -1,5 +1,2 @@
-UPDATE cars
-SET condition = 1,
-    price = 10000
-WHERE brand = 'Porsche'
-    AND sold is FALSE
+DELETE from cars
+WHERE sold is TRUE
