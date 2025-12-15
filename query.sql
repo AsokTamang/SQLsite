@@ -1,2 +1,1 @@
-DELETE from cars
-WHERE sold is TRUE
+SELECT * FROM dealerships;
