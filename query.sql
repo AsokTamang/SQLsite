@@ -1,2 +1,2 @@
-SELECT name,role,city,state FROM staff S RIGHT JOIN dealerships D
-ON S.dealership_id=D.id   --here we are retrieving all the dealereships info having both dealer as well as non-dealer info here deal is the staff
+SELECT name,role,sold_price FROM  staff S INNER JOIN sold_cars SC 
+ON S.id = SC.seller;  --here we are finding the list of staffs who have sold cars till date
