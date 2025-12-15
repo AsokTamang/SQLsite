@@ -1,2 +1,2 @@
-SELECT name,role,city,state FROM staff S LEFT JOIN dealerships D
-ON S.dealership_id=D.id   --here we are retrieving all the staffs both dealer as well as non-dealer
+SELECT name,role,city,state FROM staff S RIGHT JOIN dealerships D
+ON S.dealership_id=D.id   --here we are retrieving all the dealereships info having both dealer as well as non-dealer info here deal is the staff
