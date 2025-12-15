@@ -57,3 +57,10 @@ cars_id integer NOT NULL references cars(id),
 seller integer NOT NULL references staff(id),
 sold_date date NOT NULL,
 sold_price integer NOT NULL);
+
+
+--altogether 4 types of join in sql
+--left join - returns all the column from left part A including the common column with B
+--right join - returns all the column from right part B including the common column with A
+--inner join - returns only the matching columns between A and B
+--full join - returns all the columns altogether from A and B 
