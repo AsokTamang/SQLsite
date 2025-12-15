@@ -15,6 +15,11 @@ import fs from "fs";
   
   const insertintocars=fs.readFileSync('insert-cars-data.sql','utf-8')
   await db.exec(insertintocars);
+  
+  const altertable = fs.readFileSync('alter-table.sql','utf-8')  //here we are reading a file which includes the sql query for altering the table
+  await db.exec(altertable);
+ 
+
   const query = fs.readFileSync("query.sql", "utf8"); //so this code query is used for reading the file query.sql where we write down the sql commands
   const response = await db.query(query); //then we query the existing db that we just created using the sql command which is read in the variable query
   console.table(response.rows); //here we are consoling the rows of the response in a table
