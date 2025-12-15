@@ -13,10 +13,9 @@ import fs from "fs";
   const populatetables = fs.readFileSync("populate-tables.sql", "utf-8"); //here the query of poupulating the tables is in the file called populate-tables
   await db.exec(populatetables); //then we execute the function of populating the tables
   
-  const insertintocars=fs.readFileSync('insert-into-cars.sql','utf-8')
+  const insertintocars=fs.readFileSync('insert-cars-data.sql','utf-8')
   await db.exec(insertintocars);
   const query = fs.readFileSync("query.sql", "utf8"); //so this code query is used for reading the file query.sql where we write down the sql commands
   const response = await db.query(query); //then we query the existing db that we just created using the sql command which is read in the variable query
-  console.clear();
   console.table(response.rows); //here we are consoling the rows of the response in a table
 })();

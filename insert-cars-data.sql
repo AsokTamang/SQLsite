@@ -1,5 +1,4 @@
 INSERT INTO cars(
-        id,
         brand,
         model,
         year,

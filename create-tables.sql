@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS staff (
     --here we are creating a foregin key ,which is the id of this table staff that references the id of the dealership
     name TEXT NOT NULL,
     role TEXT NOT NULL
-)
+);
 /*
 	Create the sold_cars table
 		Include these columns:
