@@ -6,3 +6,12 @@ SET price = CASE
     END
 WHERE sold IS FALSE
     AND brand = 'Aston Martin';
+
+
+UPDATE cars 
+SET price = CASE
+WHEN state = 'Chicago' THEN price+0.2*price
+WHEN state = 'Detroit' THEN price- 0.2*price
+ELSE price
+END
+WHERE sold IS FALSE AND dealership_id IS NOT NULL;
