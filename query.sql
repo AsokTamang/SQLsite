@@ -1,6 +1,5 @@
-SELECT name,role,D.city FROM sold_cars SC RIGHT JOIN staff S ON seller=S.id LEFT JOIN dealerships D ON dealership_id=D.id
-WHERE 
-SC.id is NULL AND S.role='Salesperson';
 
---here we are selecting the name and role of a staff who is a salesperson and who might be or not be in the dealership but hasnot sold any cars till now, so
---thats why in the where clause the sold_cars id here must be null
+---dealerships and cars then comes the table sold_cars
+SELECT D.city,D.state,COUNT(SC.id) AS cars_sold FROM dealerships D LEFT JOIN cars C ON C.dealership_id=D.id LEFT JOIN sold_cars SC ON cars_id=C.id 
+GROUP BY D.city,D.state
+ORDER BY cars_sold  DESC;  --here we are  including the cars which might or mightnot be in the dealerships and also including the sold cars which might or mightnot be in the dealerships
