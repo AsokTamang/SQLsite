@@ -1,5 +1,2 @@
-SELECT name,
-    role,
-    sold_price
-FROM staff S
-    FULL JOIN sold_cars SC ON SC.seller = S.id
+SELECT city,state,FLOOR(AVG(price)) FROM cars C INNER JOIN dealerships D ON C.dealership_id = D.id
+GROUP BY city,state   --here we are only showing the city and state of a cars which are in the dealerships
