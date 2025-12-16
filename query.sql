@@ -1,4 +1,6 @@
-SELECT city,state,COUNT(*) AS car_count FROM cars RIGHT JOIN dealerships D ON dealership_id=D.id  --here we are counting all the cars which are in the dealerships but they are also unsold
-WHERE sold is NOT TRUE
-GROUP BY city,state
-ORDER BY car_count;
+SELECT name,role,D.city FROM sold_cars SC RIGHT JOIN staff S ON seller=S.id LEFT JOIN dealerships D ON dealership_id=D.id
+WHERE 
+SC.id is NULL AND S.role='Salesperson';
+
+--here we are selecting the name and role of a staff who is a salesperson and who is the seller and who is also in the dealership but hasnot sold any cars till now, so
+--thats why in the where clause the sold_cars id here must be null
