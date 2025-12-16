@@ -1,5 +1,4 @@
-SELECT name,role,SUM(sold_price) AS total_sales FROM staff S INNER JOIN sold_cars SC ON S.id = seller --here we are only selecting the staffs who are the seller in the table sold_cars
-WHERE S.role='Salesperson'
-GROUP BY name,role
-ORDER BY total_sales DESC;
- 
+SELECT city,state,COUNT(*) AS car_count FROM cars RIGHT JOIN dealerships D ON dealership_id=D.id  --here we are counting all the cars which are in the dealerships but they are also unsold
+WHERE sold is NOT TRUE
+GROUP BY city,state
+ORDER BY car_count;
