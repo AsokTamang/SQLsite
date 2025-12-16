@@ -1,4 +1,4 @@
-SELECT brand,model,price FROM cars 
-WHERE brand='Volkswagen' AND price < ANY (
-    select price from cars WHERE brand='Ford'
-) ---here we are selecting the brand,model and price of cars having brand Volkswagen and whose price is cheaper than any of the price of brand Ford
+--salesperson , totalsales
+SELECT S.name,SC.sold_price from staff S INNER JOIN sold_cars SC ON seller=S.id
+WHERE sold_price > ANY (
+    SELECT SUM(sold_price) from sold_cars GROUP BY seller)
