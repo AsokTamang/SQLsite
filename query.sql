@@ -42,3 +42,8 @@ SELECT brand,model,city,price FROM cars JOIN dealerships D ON dealership_id=D.id
 SELECT city,state,TO_CHAR(established,'YYYY-MM-DD') AS 'est' FROM dealerships WHERE NOT EXISTS (
     SELECT 1 FROM cars WHERE dealership_id=dealerships.id 
 );--here we are selecting the cars whose deals have already been made but these cars are not in our stock
+
+
+SELECT city,state FROM dealerships WHERE EXISTS (
+    SELECT price FROM cars WHERE dealership_id=dealerships.id AND price >50000
+);  --here we are checking if the cars existing in dealerships, costing more than 50000 are available in our stock or not
