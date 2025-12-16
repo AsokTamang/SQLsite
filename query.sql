@@ -109,3 +109,15 @@ CASE
 END 
  FROM cars --here the car's id must not match with the id inside the sold_cars table
  ORDER BY year,condition;
+
+
+SELECT brand,model,condition,price FROM cars  --here the customer is negotiating with the price based on the condition of cars
+WHERE sold IS FALSE AND
+CASE(
+    WHEN condition>=4 THEN price<100000
+    WHEN condition>=3 THEN price<50000
+    WHEN condition>=1 THEN price<20000
+    ELSE TRUE
+)
+END
+ORDER BY condition;
