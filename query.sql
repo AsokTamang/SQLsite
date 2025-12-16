@@ -72,4 +72,26 @@ WHERE staff.role = 'Salesperson'
         FROM sold_cars
         WHERE seller = staff.id
             AND sold_price > 45000
-    );  --HERE WE ARE CHECKING THE SALESPERSON WHO HAVENOT SOLD SINGLE CAR ABOVE PRICE 45000
+    )
+    AND EXISTS(
+        SELECT 1
+        FROM sold_cars
+        WHERE seller = staff.id
+    );
+--HERE WE ARE CHECKING THE SALESPERSON WHO HAVENOT SOLD SINGLE CAR ABOVE PRICE 45000
+SELECT S.name,
+    S.role,
+    S.dealership_id,
+    SUM(SC.sold_price) AS total_sales,
+    CASE
+        WHEN SUM(SC.sold_price) > 100000 THEN 10000
+        WHEN SUM(SC.sold_price) > 75000 THEN 5000
+        ELSE 1000
+    END AS bonus --we must end the case
+FROM staff S
+    LEFT JOIN sold_cars SC ON seller = S.id --even though the staff who hasnot sold any cars
+GROUP BY S.name,
+    S.role,
+    S.dealership_id
+ORDER BY bonus,
+    S.dealership_id;
