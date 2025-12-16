@@ -79,6 +79,7 @@ WHERE staff.role = 'Salesperson'
         WHERE seller = staff.id
     );
 --HERE WE ARE CHECKING THE SALESPERSON WHO HAVENOT SOLD SINGLE CAR ABOVE PRICE 45000
+--so the syntax for using the CASE method is that we must use case with when then and then we must end the case then we can use from table
 SELECT S.name,
     S.role,
     S.dealership_id,
@@ -95,3 +96,16 @@ GROUP BY S.name,
     S.dealership_id
 ORDER BY bonus,
     S.dealership_id;
+
+
+SELECT brand,model,condition,year,price 
+WHERE sold IS FALSE AND
+CASE
+ WHEN year<=1960 THEN condition>=4
+ WHEN year<=1970 THEN condition>=3
+ WHEN year<=1980 THEN condition>=2
+ WHEN year<=1990 THEN condition>=1
+ ELSE TRUE
+END 
+ FROM cars --here the car's id must not match with the id inside the sold_cars table
+ ORDER BY year,condition;
