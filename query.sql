@@ -132,7 +132,7 @@ ORDER BY condition;
 SELECT COUNT(*) AS total_sales,
     --HERE WE ARE COUNTING THE NUMBER OF CARS THAT HAVE BEEN SOLD IN EACH QUARTERS
     CASE
-        WHEN EXTRACT(
+        WHEN EXTRACT(  --here we are extracting only the month from the sold_date
             MONTH
             FROM sold_date
         ) BETWEEN 1 AND 3 THEN 'Q1'
@@ -149,3 +149,17 @@ SELECT COUNT(*) AS total_sales,
 FROM sold_cars
 GROUP BY quarter
 ORDER BY quarter;
+
+
+
+SELECT D.city,COUNT(SC.id) AS total_sales,  --here we are counting the total sales done based on the sold_cars table
+CASE
+ WHEN COUNT(SC.id)>=10 THEN 'Outperforming'
+ WHEN COUNT(SC.id)>=5 THEN 'Meeting targets'
+ WHEN COUNT(SC.id)>=1 THEN 'Underperforming'
+ ELSE 'No sales' 
+END AS performance 
+FROM dealerships D LEFT JOIN staff S ON D.id = S.dealership_id  LEFT JOIN sold_cars SC ON seller=S.id
+GROUP BY city
+ORDER BY total_sales DESC;
+
