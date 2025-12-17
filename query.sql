@@ -96,28 +96,56 @@ GROUP BY S.name,
     S.dealership_id
 ORDER BY bonus,
     S.dealership_id;
-
-
-SELECT brand,model,condition,year,price 
-WHERE sold IS FALSE AND
-CASE
- WHEN year<=1960 THEN condition>=4
- WHEN year<=1970 THEN condition>=3
- WHEN year<=1980 THEN condition>=2
- WHEN year<=1990 THEN condition>=1
- ELSE TRUE
-END 
- FROM cars --here the car's id must not match with the id inside the sold_cars table
- ORDER BY year,condition;
-
-
-SELECT brand,model,condition,price FROM cars  --here the customer is negotiating with the price based on the condition of cars
-WHERE sold IS FALSE AND
-CASE(
-    WHEN condition>=4 THEN price<100000
-    WHEN condition>=3 THEN price<50000
-    WHEN condition>=1 THEN price<20000
-    ELSE TRUE
-)
-END
+SELECT brand,
+    model,
+    condition,
+    year,
+    price
+WHERE sold IS FALSE
+    AND CASE
+        WHEN year <= 1960 THEN condition >= 4
+        WHEN year <= 1970 THEN condition >= 3
+        WHEN year <= 1980 THEN condition >= 2
+        WHEN year <= 1990 THEN condition >= 1
+        ELSE TRUE
+    END
+FROM cars --here the car's id must not match with the id inside the sold_cars table
+ORDER BY year,
+    condition;
+SELECT brand,
+    model,
+    condition,
+    price
+FROM cars --here the customer is negotiating with the price based on the condition of cars
+WHERE sold IS FALSE
+    AND CASE
+        (
+            WHEN condition >= 4 THEN price < 100000
+            WHEN condition >= 3 THEN price < 50000
+            WHEN condition >= 1 THEN price < 20000
+            ELSE TRUE
+        )
+    END
 ORDER BY condition;
+
+
+SELECT COUNT(*) AS total_sales,
+    --HERE WE ARE COUNTING THE NUMBER OF CARS THAT HAVE BEEN SOLD IN EACH QUARTERS
+    CASE
+        WHEN EXTRACT(
+            MONTH
+            FROM sold_date
+        ) BETWEEN 1 AND 3 THEN 'Q1'
+        WHEN EXTRACT(
+            MONTH
+            FROM sold_date
+        ) BETWEEN 3 AND 6 THEN 'Q2'
+        WHEN EXTRACT(
+            MONTH
+            FROM sold_date
+        ) BETWEEN 6 AND 9 THEN 'Q3'
+        ELSE 'Q4'
+    END AS quarter
+FROM sold_cars
+GROUP BY quarter
+ORDER BY quarter;
